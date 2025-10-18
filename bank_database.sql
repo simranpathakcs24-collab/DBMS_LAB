@@ -48,7 +48,8 @@ select distinct d.customername from depositer d,bankaccount ba where d.accno=ba.
                                                                                                                                                                                                                              
 select bc.customername from bankcustomer bc where bc.customername not in ( select distinct d.customername from depositer d);
 
-select ba.accno from bankaccount ba where ba.accno  in ( select  d.accno from depositer d);
+select de.customername,de.accno from bankaccount ba , depositer de where de.accno=ba.accno 
+and ba.branchname  in ( select  b.branchname from  branch b where b.branchcity="bangalore");
 
 select branchname from branch where assets > all(select br.assets from branch br where br.branchcity="bangalore");
 
